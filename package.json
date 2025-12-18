@@ -1,0 +1,28 @@
+{
+  "name": "inst377_final_project",
+  "version": "1.0.0",
+  "description": "INST377 Final Project",
+  "homepage": "https://github.com/lukebarbehenn/inst377_final_project#readme",
+  "bugs": {
+    "url": "https://github.com/lukebarbehenn/inst377_final_project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukebarbehenn/inst377_final_project.git"
+  },
+  "license": "ISC",
+  "author": "Luke Barbehenn",
+  "type": "commonjs",
+  "main": "clash_of_clans.js",
+  "scripts": {
+    "start": "nodemon -e '*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.88.0",
+    "body-parser": "^2.2.1",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemon": "^3.1.11"
+  }
+}
