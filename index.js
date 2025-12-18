@@ -1,7 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const supabaseClient = require('@supabase/supabase-js')
-const { isValidStateAbbreviation }  = require('usa-state-validator');
 const dotenv = require('dotenv')
 
 const app = express(); 
@@ -9,6 +8,7 @@ const port = 3000;
 dotenv.config()
 
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'))
 
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
@@ -37,19 +37,7 @@ app.post('/customer', async(req, res) => {
 
     const firstName = req.body.firstName;
     const lastName = req.body.lastName;
-    const state = req.body.state; 
-
-        if(!isValidStateAbbreviation(state)){
-            console.error(`State: ${state} is Invalid`);
-            res.statusCode = 400;
-            const errorJSON = {
-                message: `${state} is not a valid 2 letter state abbreviaton`
-            };
-            res.header('Content-type', 'application/json')
-            res.send(JSON.stringify(errorJSON));
-            return;
-        }
-
+   
     const {data, error} = await supabase.from('customer').insert({
         customer_first_name: firstName,
         customer_last_name: lastName,
