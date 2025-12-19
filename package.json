@@ -13,7 +13,7 @@
   "license": "ISC",
   "author": "Luke Barbehenn",
   "type": "commonjs",
-  "main": "clash_of_clans.js",
+  "main": "players.js",
   "scripts": {
     "start": "nodemon -e '*",
     "test": "echo \"Error: no test specified\" && exit 1"
