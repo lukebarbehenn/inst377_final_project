@@ -1,21 +1,46 @@
 <html>
   <head>
-    <title>CoC Website - Clans</title>
+    <title>CoC Website - Top Players</title>
     <link rel="stylesheet" href="main_pages.css" />
-    <script src="clash_of_clans.js" defer></script>
+    <link rel="stylesheet" href="clans.css" />
+    <script src="clans.js" defer></script>
   </head>
   <body>
-    <h1>Current Clans in the game</h1>
+    <h1>Top Players Currently in the Game!</h1>
     <nav>
       <ul>
         <li><a href="home_page.html">Home</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="players.html">Players</a></li>
-        <li><a href="clans.html">Clans</a></li>
+        <li><a href="players.html">Player Lookup</a></li>
+        <li><a href="clans.html">Top Players</a></li>
         <li><a href="war.html">Wars</a></li>
       </ul>
     </nav>
 
+    <div id="main-container">
+      <h2>Let's see who's number one...</h2>
+      <h3>Choose to see the top 10, 25, 50, and 100 players in the game</h3>
 
+      <form>
+        <select id="leaderboard">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select>
+        <br />
+        <button type="button" class="button-22" onclick="getTopPlayers()">Lets see!</button>
+      </form>
+
+      <table id="playerDataTable">
+        <tr>
+          <th>Rank</th>
+          <th>Player Name</th>
+          <th>Townhall Level</th>
+          <th>Trophies</th>
+        </tr>
+      </table>
+      <h2 id="message"></h2>
+    </div>
   </body>
 </html>
