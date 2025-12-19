@@ -10,55 +10,62 @@ dotenv.config();
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
-// Initialize Supabase Client
 const supabaseUrl = process.env.SUPABASE_URL;
-const supabaseKey = process.env.SUPABASE_KEY;
+const supabaseKey = process.env.SUPABASE_KEY; 
 const supabase = supabaseClient.createClient(supabaseUrl, supabaseKey);
 
 app.get('/', (req, res) => {
-  res.sendFile('public/Customers.html', { root: __dirname });
+  res.sendFile('public/players.html', { root: __dirname });
 });
 
-app.get('/customers', async (req, res) => {
-  console.log('Attempting to GET all customers');
 
-  const { data, error } = await supabase.from('customer').select();
-
-  if (error) {
-    console.log(`Error: ${error}`);
-    res.statusCode = 500;
-    res.send(error);
-    return;
-  } else {
-    res.send(data);
-  }
-});
-
-app.post('/customer', async (req, res) => {
-  console.log('Adding customer');
-  console.log('Request:', req.body);
-
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
+app.get('/players', async (req, res) => {
+  console.log('Attempting to GET all players');
 
   const { data, error } = await supabase
-    .from('customer')
+    .from('players')
+    .select();
+
+  if (error) {
+    console.log('Error:', error);
+    res.status(500).send(error);
+    return;
+  }
+
+  res.send(data);
+});
+
+
+
+app.post('/players', async (req, res) => {
+  console.log('Adding player');
+  console.log('Request:', req.body);
+
+  const playerName = req.body.player_name;
+  const clanName = req.body.clan_name;
+  const townHall = req.body.town_hall;
+  const league = req.body.league;
+  const trophies = req.body.trophies;
+
+
+  const { data, error } = await supabase
+    .from('players')
     .insert({
-      customer_first_name: firstName,
-      customer_last_name: lastName,
-      customer_state: state,
+      player_name: playerName,
+      clan_name: clanName,
+      town_hall: townHall,
+      league: league,
+      trophies: trophies
     })
     .select();
 
   if (error) {
-    console.log(`Error: ${error}`);
-    res.statusCode = 500;
-    res.send(error);
+    console.log('Error:', error);
+    res.status(500).send(error);
     return;
-  } else {
-    res.send(data);
   }
-  res.send(req.body);
+
+  res.send(data);
 });
 
 app.listen(port, () => {
