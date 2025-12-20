@@ -1,5 +1,21 @@
 let thChart = null;
 
+// This function saves the data to supabase
+async function supabaseSaved(player) {
+  await fetch('/players', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      player_name: player.name,
+      clan_name: player.clan_name,
+      town_hall: player.th,
+      league: player.league,
+      trophies: player.trophies
+    })
+  });
+}
+
+// Function for looking up players 
 async function getPlayer() {
 
   const playerInput = document.getElementById('playerName').value
@@ -35,10 +51,14 @@ async function getPlayer() {
 
 
     playerTable.append(tableRow);
+
+    supabaseSaved(player);
+    
   });
   renderTHChart(playersData.items);
 }
 
+// Creates chart of town halls 
 function renderTHChart(players) {
   const labels = players.map(p => p.name);
   const data = players.map(p => p.th);
