@@ -15,7 +15,7 @@ async function supabaseSaved(player) {
   });
 }
 
-// Function for looking up players 
+// Searches any player, then uses the above function to save to supabase 
 async function getPlayer() {
 
   const playerInput = document.getElementById('playerName').value
@@ -58,7 +58,7 @@ async function getPlayer() {
   renderTHChart(playersData.items);
 }
 
-// Get players currently stored in my supabase 
+// Get players currently stored in my supabase database 
 async function loadPlayersSupabase() {
   const res = await fetch('/players');
   const players = await res.json();
@@ -93,7 +93,6 @@ async function loadPlayersSupabase() {
     playerTable.append(tableRow);
   });
 }
-
 
 // Creates chart of town halls 
 function renderTHChart(players) {

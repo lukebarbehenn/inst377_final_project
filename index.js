@@ -35,8 +35,6 @@ app.get('/players', async (req, res) => {
   res.send(data);
 });
 
-
-
 app.post('/players', async (req, res) => {
   console.log('Adding player');
   console.log('Request:', req.body);
