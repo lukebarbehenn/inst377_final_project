@@ -41,6 +41,17 @@
       <h2>Clash of Clans is still alive and well!</h2>
       <h3>Graph showing each player's town hall levels:</h3>
       <canvas id="town_hall_chart"></canvas>
+      <h2>Click to reveal players stored in my database!</h2>
+      <button class="button-42" onclick="loadPlayersSupabase()">Load Players</button>
+      <table id="supabaseTable">
+        <tr>
+          <th>Player Name</th>
+          <th>Clan Name</th>
+          <th>Town Hall Level</th>
+          <th>League</th>
+          <th>Trophies</th>
+        </tr>
+      </table>
     </div>
   </body>
 </html>

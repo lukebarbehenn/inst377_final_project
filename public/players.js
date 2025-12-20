@@ -58,6 +58,43 @@ async function getPlayer() {
   renderTHChart(playersData.items);
 }
 
+// Get players currently stored in my supabase 
+async function loadPlayersSupabase() {
+  const res = await fetch('/players');
+  const players = await res.json();
+
+  const playerTable = document.getElementById('supabaseTable');
+
+  while (playerTable.rows.length > 1) {
+    playerTable.deleteRow(1);
+  }
+
+  players.forEach(player => {
+    const tableRow = document.createElement('tr');
+    const playerName = document.createElement('td');
+    const playerClan = document.createElement('td');
+    const playerTownHall = document.createElement('td');
+    const playerLeague = document.createElement('td');
+    const playerTrophies = document.createElement('td');
+
+    playerName.innerHTML = player.player_name
+    playerClan.innerHTML = player.clan_name
+    playerTownHall.innerHTML = player.town_hall
+    playerLeague.innerHTML = player.league
+    playerTrophies.innerHTML = player.trophies
+
+    tableRow.appendChild(playerName);
+    tableRow.appendChild(playerClan);
+    tableRow.appendChild(playerTownHall);
+    tableRow.appendChild(playerLeague);
+    tableRow.appendChild(playerTrophies);
+
+
+    playerTable.append(tableRow);
+  });
+}
+
+
 // Creates chart of town halls 
 function renderTHChart(players) {
   const labels = players.map(p => p.name);
