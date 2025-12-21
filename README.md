@@ -1,1 +1,14 @@
-# inst377_final_project
+Luke Barbehenn - INST377 Final Project 
+
+Title: Clash of Clans Data Website 
+
+Description: Supercell, the creator of the game Clash of Clans, is concerned that the game is losing popularity, and may no longer keep it updated if they believe this is the case. This website aims to prove to Supercell that Clash of Clans is in fact very popular, as it shows the many active players and their stats. There are three main components of the website. The "player lookup" page provides an oppurtunity to search for any player within the game. The results return a table that shows the player's name, current clan, town hall level, league and trophies. It also saves the results to a database and their is also a way to see what's currently saved in that database. The "top players" page displays the top 10, 25, 50, and 100 players in the game based on the number the user chooses and also returns the same stats as mentioned before. Finally, the "statistics" page is the best way to prove to Supercell that the game is still popular, as it showcases general game statistics such as how many players total are currently in the game. 
+
+Target Browsers: IOS, Android, Chrome, Safari, Firefox, Edge etc.. (basically should work on any browser or device)
+
+Developer Manual is down below. Developers, keep reading! 
+
+
+DEVELOPER MANUAL: 
+
+This project was built on the frontend using simple HTML, CSS, and JS. To install, simply download the files and run on any code editor such as VS Code. The backend was built using node.js and express and connected to a Supabase database. To install, make sure you have node, express, bodyparser, and dotenv libraries already on your local machine. This will be important or the application may not work. To start the server, simply run "node index.js" at the terminal. The API used for this project is called the Clashking API, which returns current realtime data about the game Clash of Clans. The GET API endpoints used in this project were to return a list of players, top players, and general game information. These were retrieved using FETCH calls. The only POST requests to the Supabase database were to insert the players returned after searching. These calls and more can be found in the "index.js" (on the backend) and "players.js" (on the frontend) files. The only bugs to be aware about was that there was some issues with the website being able to send data to the database when it was not on a local connection. This may have something to do with the ports locally and the way the node.js was originally set up. There was also some issues getting the server started using nodemon. For future development, check the node.js configuration setup and make sure the server is able to communicate without being local. You may also need to reinstall nodemon for the server to run properly. Otherwise, the project is easy to use, interactive, and fun if you are a Clash of Clans fan. 
