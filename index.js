@@ -66,8 +66,7 @@ app.post('/players', async (req, res) => {
   res.send(data);
 });
 
-module.exports = app;
 
-// app.listen(port, () => {
-//   console.log('App is available on port:', port);
-// });
+app.listen(port, () => {
+  console.log('App is available on port:', port);
+});
